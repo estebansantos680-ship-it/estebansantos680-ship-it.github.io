@@ -69,14 +69,14 @@ ul{margin:0;padding:0}
 /* header */
 .top{padding-block:28px}
 .top .wrap{display:flex;align-items:center;gap:1.5rem}
-.brand{text-decoration:none;font-weight:500;font-size:.95rem;white-space:nowrap}
+.brand{font-weight:500;font-size:.95rem;white-space:nowrap}
 .brand span{color:var(--accent);margin-left:.4rem}
 .top nav{margin-left:auto;display:flex;align-items:center;gap:1.4rem;font-size:.88rem}
 .top nav a{text-decoration:none;white-space:nowrap}
 .top nav a:hover{color:var(--accent)}
 .top nav .mail{color:var(--accent)}
-.lang{display:flex;border:1px solid var(--line);border-radius:99px;overflow:hidden}
-.lang button{background:none;border:0;color:var(--muted);font:500 .7rem var(--f-mono);padding:.35rem .6rem;cursor:pointer}
+.lang{display:flex;flex:none;border:1px solid var(--line);border-radius:99px;overflow:hidden}
+.lang button{background:none;border:0;color:var(--muted);font:500 .7rem/1 var(--f-mono);padding:.45rem .65rem;cursor:pointer;white-space:nowrap}
 .lang button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
 @media (max-width:760px){.top nav .hide-m{display:none}.brand span{display:none}}
 
@@ -263,10 +263,15 @@ ul{margin:0;padding:0}
 
 /* final cta */
 .final{padding-block:clamp(3.5rem,8vw,6rem)}
+.final h2{font-size:clamp(1.9rem,4vw,2.75rem)}
 .final p{margin-top:1rem;color:var(--ink-2);max-width:34rem}
 .contact-line{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem;margin-top:1.2rem;font-size:.85rem;color:var(--muted)}
 .contact-line b{color:var(--ink);font-weight:500;user-select:all}
-.copy{background:none;border:1px solid var(--line);border-radius:99px;font:500 .7rem var(--f-mono);padding:.3rem .65rem;cursor:pointer;color:var(--ink-2)}
+.contact-line span:first-child{min-width:5.5rem}
+.contact-line b{margin-right:.4rem}
+.copy{display:inline-flex;align-items:center;background:none;border:1px solid var(--line);border-radius:99px;font:500 .7rem/1 var(--f-mono);padding:.4rem .7rem;cursor:pointer;color:var(--ink-2);text-decoration:none;white-space:nowrap}
+.copy.go{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.copy.go:hover{background:var(--accent);border-color:var(--accent);color:#fff}
 .copy:hover{border-color:var(--accent);color:var(--accent)}
 
 /* footer */
@@ -316,7 +321,7 @@ footer .fine{grid-column:1/-1;font:400 .7rem var(--f-mono);color:var(--muted)}
 <!-- ================= NAV ================= -->
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#inicio">Esteban Santos<span data-en="Systems &amp; Data">Sistemas y Datos</span></a>
+    <div class="brand">Esteban Santos<span data-en="Systems &amp; Data">Sistemas y Datos</span></div>
     <nav aria-label="Principal">
       <a class="mail hide-m" href="mailto:estebansantos680@gmail.com">estebansantos680@gmail.com</a>
       <a class="hide-m" href="#trabajo" data-en="Work">Trabajo</a>
@@ -643,8 +648,8 @@ footer .fine{grid-column:1/-1;font:400 .7rem var(--f-mono);color:var(--muted)}
     <a class="btn btn-dark" href="https://wa.me/50672808979" target="_blank" rel="noopener"><span data-en="Message on WhatsApp">Escribir por WhatsApp</span></a>
     <a class="btn btn-line" href="https://www.linkedin.com/in/esteban-santos-09a48b201/" target="_blank" rel="noopener" data-en="Connect on LinkedIn">Conectar en LinkedIn</a>
   </div>
-  <div class="contact-line"><span>Email</span><b id="email">estebansantos680@gmail.com</b><button type="button" class="copy" id="copy-email" data-en="Copy">Copiar</button></div>
-  <div class="contact-line"><span data-en="Phone">Teléfono</span><b id="phone">+506 7280 8979</b><button type="button" class="copy" id="copy-phone" data-en="Copy">Copiar</button></div>
+  <div class="contact-line"><span>Email</span><b id="email">estebansantos680@gmail.com</b><a class="copy go" href="mailto:estebansantos680@gmail.com" data-en="Send email">Enviar correo</a><button type="button" class="copy" id="copy-email" data-en="Copy">Copiar</button></div>
+  <div class="contact-line"><span data-en="Phone">Teléfono</span><b id="phone">+506 7280 8979</b><a class="copy go" href="tel:+50672808979" data-en="Call">Llamar</a><a class="copy" href="https://wa.me/50672808979" target="_blank" rel="noopener">WhatsApp</a><button type="button" class="copy" id="copy-phone" data-en="Copy">Copiar</button></div>
 </section>
 </main>
 
@@ -804,6 +809,7 @@ footer .fine{grid-column:1/-1;font:400 .7rem var(--f-mono);color:var(--muted)}
   }
   window.addEventListener('hashchange', route);
   route();
+  window.addEventListener('load', function(){ if (location.hash) route(); });
 })();
 </script>
 
